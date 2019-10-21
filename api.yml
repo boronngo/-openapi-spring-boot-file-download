@@ -20,3 +20,15 @@ paths:
             text/csv:
               schema:
                 type: string
+  /csv/sjis:
+    get:
+      summary: CSVダウンロード(sjis)
+      tags:
+        - Download
+      responses:
+        "200":
+          description: OK
+          content:
+            text/csv; charset=Shift_JIS:
+              schema:
+                type: string

@@ -41,4 +41,13 @@ class DownloadApiController(@Autowired(required = true) val service: DownloadApi
     fun csvGet(): ResponseEntity<kotlin.String> {
         return ResponseEntity(service.csvGet(), HttpStatus.valueOf(200))
     }
+
+
+    @RequestMapping(
+        value = ["/csv/sjis"],
+        produces = ["text/csv; charset=Shift_JIS"], 
+        method = [RequestMethod.GET])
+    fun csvSjisGet(): ResponseEntity<kotlin.String> {
+        return ResponseEntity(service.csvSjisGet(), HttpStatus.valueOf(200))
+    }
 }
