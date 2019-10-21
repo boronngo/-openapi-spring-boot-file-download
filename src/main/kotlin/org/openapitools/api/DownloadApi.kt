@@ -50,4 +50,13 @@ class DownloadApiController(@Autowired(required = true) val service: DownloadApi
     fun csvSjisGet(): ResponseEntity<kotlin.String> {
         return ResponseEntity(service.csvSjisGet(), HttpStatus.valueOf(200))
     }
+
+
+    @RequestMapping(
+        value = ["/image"],
+        produces = ["image/jpeg"], 
+        method = [RequestMethod.GET])
+    fun imageGet(): ResponseEntity<org.springframework.core.io.Resource> {
+        return ResponseEntity(service.imageGet(), HttpStatus.valueOf(200))
+    }
 }

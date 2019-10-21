@@ -32,3 +32,16 @@ paths:
             text/csv; charset=Shift_JIS:
               schema:
                 type: string
+  /image:
+    get:
+      summary: 画像ダウンロード
+      tags:
+        - Download
+      responses:
+        "200":
+          description: OK
+          content:
+            image/jpeg:
+              schema:
+                type: string
+                format: binary
