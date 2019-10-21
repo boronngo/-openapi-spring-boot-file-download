@@ -1,5 +1,6 @@
 package org.openapitools.api
 
+import org.openapitools.model.ImageType
 import org.springframework.http.HttpStatus
 import org.springframework.http.MediaType
 import org.springframework.http.ResponseEntity
@@ -58,5 +59,15 @@ class DownloadApiController(@Autowired(required = true) val service: DownloadApi
         method = [RequestMethod.GET])
     fun imageGet(): ResponseEntity<org.springframework.core.io.Resource> {
         return ResponseEntity(service.imageGet(), HttpStatus.valueOf(200))
+    }
+
+
+    @RequestMapping(
+        value = ["/image/jpeg_or_png"],
+        produces = ["image/jpeg", "image/png"], 
+        method = [RequestMethod.GET])
+    fun imageJpegOrPngGet(@NotNull  @RequestParam(value = "type", required = true) type: ImageType
+): ResponseEntity<org.springframework.core.io.Resource> {
+        return ResponseEntity(service.imageJpegOrPngGet(type), HttpStatus.valueOf(200))
     }
 }

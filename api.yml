@@ -45,3 +45,33 @@ paths:
               schema:
                 type: string
                 format: binary
+  /image/jpeg_or_png:
+    get:
+      summary: 画像ダウンロード(jpeg or png)
+      tags:
+        - Download
+      parameters:
+        - in: query
+          name: type
+          required: true
+          schema:
+            $ref: "#/components/schemas/ImageType"
+      responses:
+        "200":
+          description: OK
+          content:
+            image/jpeg:
+              schema:
+                type: string
+                format: binary
+            image/png:
+              schema:
+                type: string
+                format: binary
+components:
+  schemas:
+    ImageType:
+      type: string
+      enum:
+        - jpeg
+        - png
